@@ -226,10 +226,73 @@ Password: test123
 
 MIT License
 
-## 🤝 Créditos
+---
 
-Desarrollado para Hackathon ONE - No Country
+## 🙏 Agradecimientos
 
-- **Frontend inspirado en:** [Alexandracleto/sentimientos](https://github.com/Alexandracleto/sentimientos)
-- **API ML:** FastAPI + scikit-learn
-- **Backend:** Spring Boot + PostgreSQL
+Este proyecto fue posible gracias al esfuerzo colaborativo y el apoyo de múltiples actores:
+
+### Al Programa Hackathon ONE - No Country
+
+Agradecemos profundamente a **No Country** por:
+- Proporcionar un espacio de aprendizaje colaborativo y desafiante
+- Fomentar el trabajo en equipo interdisciplinario
+- Crear oportunidades para desarrolladores de toda Latinoamérica
+- Impulsar proyectos que resuelven problemas reales con tecnología
+
+### Al Equipo No Data - No Code
+
+Agradecimiento especial al equipo **No Data - No Code** por el extraordinario trabajo realizado durante la Hackathon:
+
+- **Alexandra Cleto** - Por su repositorio de referencia [sentimientos](https://github.com/Alexandracleto/sentimientos/tree/Ale-dev) que sirvió como inspiración y base para el diseño de este dashboard. Su trabajo incluye:
+  - Diseño UI moderno con Glassmorphism y gradientes
+  - Integración con Recharts para visualización de datos
+  - Estructura de componentes React reutilizables
+  
+- **Jonathan Tuppia** - Por su repositorio de referencia [SentimentAPI](https://github.com/Jona-9/SentimentAPI) y por liderar el deploy de los tres frentes en local y la presentación exitosa en el Demo Day.
+- **Francisco Llendo** - Por desarrollar el modelo de ML v4.0 disponible en [Sentimental_API_No_Data_No_Code_Semana_4](https://github.com/GustavoVasquezS/Sentimental_API_No_Data_No_Code_Semana_4).
+
+### Al Equipo de Desarrollo
+
+**Frontend Team (React/Tailwind)**:
+- Por crear una interfaz intuitiva que hace accesible la complejidad del análisis
+- Por implementar gráficos interactivos con Recharts
+- Por el diseño responsive adaptable a múltiples dispositivos
+
+**Backend Team (Java/Spring Boot)**:
+- Por la implementación robusta del sistema de autenticación JWT
+- Por los endpoints de gestión de productos y sesiones
+
+**Data Science Team (Python/FastAPI)**:
+- Por desarrollar un modelo de ML preciso y eficiente
+- Por los endpoints de predicción rápidos y confiables
+
+### A la Comunidad Open Source
+
+Especial reconocimiento a los mantenedores de:
+- **React** - Por el framework UI declarativo y eficiente
+- **Tailwind CSS** - Por el sistema de diseño utility-first
+- **Recharts** - Por los componentes de gráficos basados en React
+- **Lucide** - Por los iconos modernos y accesibles
+
+### A los Futuros Usuarios y Contribuidores
+
+Si este proyecto te resultó útil, considera:
+- ⭐ **Dar una estrella** al repositorio en GitHub
+- 🐛 **Reportar bugs** o sugerir mejoras a través de Issues
+- 🔧 **Contribuir** con Pull Requests
+- 📢 **Compartir** el proyecto con otros desarrolladores
+
+---
+
+<div align="center">
+
+**⭐ Si este proyecto te ayudó, considera darle una estrella ⭐**
+
+**🚀 Happy Coding! 🚀**
+
+---
+
+*Sentiment Dashboard v4.0 - Hackathon ONE 2026*
+
+</div>
