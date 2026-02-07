@@ -132,8 +132,15 @@ function App() {
       });
 
       if (!response.ok) {
-        const errorData = await response.text();
-        throw new Error(errorData || 'Error al registrar');
+        let errorMsg = 'Error al registrar';
+        try {
+          const errorData = await response.json();
+          errorMsg = errorData.error || errorData.message || JSON.stringify(errorData);
+        } catch {
+          const errorText = await response.text();
+          errorMsg = errorText || errorMsg;
+        }
+        throw new Error(errorMsg);
       }
 
       setSuccess('¡Registro exitoso! Ahora puedes iniciar sesión.');
