@@ -1562,7 +1562,7 @@ function App() {
                         dataKey="value"
                         paddingAngle={3}
                       >
-                        {getStatsData().map((entry, index) => (
+                        {getStatsData().filter(d => d.value > 0).map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                       </Pie>
