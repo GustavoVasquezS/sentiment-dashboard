@@ -1,16 +1,35 @@
 ================================================================================
                     RESUMEN DEL PROYECTO - SentimentAPI
-                         Fecha: 1 de Febrero de 2026
+              Ultima actualizacion: 7 de Febrero de 2026
 ================================================================================
 
-ARQUITECTURA DEL SISTEMA
+ARQUITECTURA DEL SISTEMA (PRODUCCION)
 --------------------------------------------------------------------------------
-| Componente        | Ubicación                                      | Estado    |
+| Componente        | URL / Ubicación                                | Estado    |
 |-------------------|------------------------------------------------|-----------|
-| API Python (ML)   | Render: sentiment-api-render.onrender.com      | Desplegado|
+| Frontend React    | https://sentiment-dashboard-pi.vercel.app      | Desplegado|
+| Backend Java      | https://sentiment-backend-java-production.up.railway.app | Desplegado|
+| API Python (ML)   | https://sentiment-api-render.onrender.com      | Desplegado|
 | PostgreSQL        | Render: dpg-d5vdmql6ubrc73cd72ig-a.oregon...   | Desplegado|
-| Backend Java      | Local: sentiment_backend_java                  | Funcional |
-| Frontend React    | Local: sentiment_dashboard                     | Funcional |
+--------------------------------------------------------------------------------
+
+REPOSITORIOS GITHUB
+--------------------------------------------------------------------------------
+| Componente        | Repositorio                                              |
+|-------------------|----------------------------------------------------------|
+| Frontend React    | github.com/GustavoVasquezS/sentiment-dashboard           |
+| Backend Java      | github.com/GustavoVasquezS/sentiment-backend-java        |
+| API Python (ML)   | github.com/GustavoVasquezS/sentiment_api_render (o Jona-9/SentimentAPI original) |
+--------------------------------------------------------------------------------
+
+PLATAFORMAS DE DEPLOY
+--------------------------------------------------------------------------------
+| Componente        | Plataforma | Plan     |
+|-------------------|------------|----------|
+| Frontend React    | Vercel     | Free     |
+| Backend Java      | Railway    | Free     |
+| API Python (ML)   | Render     | Free     |
+| PostgreSQL        | Render     | Free     |
 --------------------------------------------------------------------------------
 
 ================================================================================
@@ -83,10 +102,10 @@ BASE DE DATOS POSTGRESQL (Render):
    Password: REXGv3PExiH2DuU4OV1MdBZ0sufnQSOH
 
 ================================================================================
-ENDPOINTS API
+ENDPOINTS API (PRODUCCION)
 ================================================================================
 
-BACKEND JAVA (localhost:8080/project/api/v2)
+BACKEND JAVA (https://sentiment-backend-java-production.up.railway.app/project/api/v2)
 --------------------------------------------------------------------------------
 POST /usuario/login              - Login (devuelve JWT)
 POST /usuario                    - Registro de usuario
@@ -94,38 +113,41 @@ POST /csv/analizar               - Procesar CSV con categorias/productos
 GET  /csv/comparativa-productos  - Estadisticas por producto
 GET  /csv/comparativa-categorias - Estadisticas por categoria
 GET  /sesion/historial           - Historial persistente del usuario
+POST /sentiment/analyze          - Analisis individual via backend
+POST /sentiment/analyze/batch    - Analisis batch via backend
 
 API PYTHON (https://sentiment-api-render.onrender.com)
 --------------------------------------------------------------------------------
+GET  /health        - Health check del modelo
 POST /predict       - Analisis de sentimiento individual
 POST /predict/batch - Analisis de sentimiento por lotes
 
 ================================================================================
-PROXIMOS PASOS (SIGUIENTE SESION)
+VARIABLES DE ENTORNO (PRODUCCION)
 ================================================================================
 
-1. PROBAR FUNCIONAMIENTO DEL PROYECTO:
-   - Iniciar Backend Java:
-     cd sentiment_backend_java
-     .\mvnw.cmd spring-boot:run
-   
-   - Iniciar Frontend:
-     cd sentiment_dashboard
-     npm start
-   
-   - Probar carga de CSV con test_data.csv
-   - Verificar comparativas y historial
+VERCEL (Frontend):
+   REACT_APP_JAVA_API_URL=https://sentiment-backend-java-production.up.railway.app/project/api/v2
+   REACT_APP_PYTHON_API_URL=https://sentiment-api-render.onrender.com
 
-2. DEPLOY BACKEND JAVA EN RENDER:
-   - Crear Dockerfile en sentiment_backend_java
-   - Crear render.yaml o configurar manualmente en dashboard
-   - Configurar variables de entorno para produccion
-   - NOTA: Vercel NO soporta Java, usar Render
+RAILWAY (Backend Java):
+   SPRING_DATASOURCE_URL=jdbc:postgresql://dpg-d5vdmql6ubrc73cd72ig-a.oregon-postgres.render.com:5432/sentiment_db_ay8e
+   SPRING_DATASOURCE_USERNAME=sentiment_db_ay8e_user
+   SPRING_DATASOURCE_PASSWORD=REXGv3PExiH2DuU4OV1MdBZ0sufnQSOH
+   CONFIG_URL=https://sentiment-api-render.onrender.com
+   JWT_SECRET=sentimentApiSecretKey2026HackathonOneNoCountry
+   JWT_EXPIRATION=86400000
+   PORT=8080
 
-3. DEPLOY FRONTEND EN VERCEL:
-   - Conectar repositorio GitHub
-   - Configurar variable REACT_APP_API_URL con URL del backend en Render
-   - Actualizar App.js para usar variable de entorno en produccion
+================================================================================
+COMPLETADO - SESION 7 FEB 2026
+================================================================================
+
+1. [OK] Probado flujo completo localmente (CSV, comparativas, historial)
+2. [OK] Backend Java desplegado en Railway (Dockerfile multi-stage)
+3. [OK] Frontend React desplegado en Vercel (env vars configuradas)
+4. [OK] CORS configurado para produccion (vercel.app, railway.app, onrender.com)
+5. [OK] application.properties con env vars y fallbacks para dev local
 
 ================================================================================
 RUTAS DE LOS PROYECTOS
