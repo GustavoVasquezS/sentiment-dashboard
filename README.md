@@ -1,298 +1,349 @@
-# 🎯 Sentiment Dashboard
+# 🖥️ SentimentAPI - Frontend de Análisis de Sentimientos
 
 <div align="center">
 
-![React](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwind-css)
-![Recharts](https://img.shields.io/badge/Recharts-2.12-FF6384?style=flat-square)
-![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=flat-square&logo=vercel)
+![SentimentAPI](https://img.shields.io/badge/SentimentAPI-v1.0.0-purple?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19.2.0-61DAFB?style=for-the-badge&logo=react)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1.18-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Vite](https://img.shields.io/badge/Vite-7.2.4-646CFF?style=for-the-badge&logo=vite)
 
-**Dashboard interactivo para análisis de sentimientos en Español y Portugués**
+**Análisis de sentimientos con IA • Multilingüe: Español & Português**
 
-[Demo en Producción](https://sentiment-dashboard-pi.vercel.app) · [API Docs](https://sentiment-api-render.onrender.com/docs)
+[Demo](#-demo) • [Características](#-características) • [Instalación](#-instalación) • [Uso](#-uso)
 
 </div>
 
 ---
 
-## 🌐 URLs de Producción
+## 📋 Descripción del Proyecto
 
-| Servicio | URL |
-|----------|-----|
-| **Frontend (este repo)** | https://sentiment-dashboard-pi.vercel.app |
-| **Backend Java** | https://sentiment-backend-java-production.up.railway.app |
-| **ML API Python** | https://sentiment-api-render.onrender.com |
+**SentimentAPI** es una aplicación web moderna diseñada para analizar sentimientos en textos utilizando inteligencia artificial avanzada. Permite a los usuarios procesar feedback, comentarios y reseñas en español y portugués, obteniendo insights valiosos mediante visualizaciones interactivas y estadísticas detalladas.
+
+### 🎯 Propósito
+
+Esta interfaz frontend se conecta con La API llamada **SentimentAPI** para ofrecer:
+- ✅ **Análisis instantáneo** de textos individuales o masivos
+- 📊 **Visualizaciones interactivas** con gráficos y estadísticas
+- 🔐 **Gestión de usuarios** con autenticación JWT
+- 📁 **Historial de análisis** para usuarios registrados
+- 🏷️ **Análisis por productos** organizados por categorías
+- 💾 **Carga de archivos CSV** para procesamiento batch
 
 ---
 
-## 📖 Descripción
+## ✨ Características
 
-Interfaz web moderna desarrollada en **React 18** que consume tanto la API de Machine Learning (Python/FastAPI) como el Backend Java (Spring Boot). Permite realizar análisis de sentimientos de forma individual o por lotes, gestionar productos por categorías, y visualizar estadísticas con gráficos interactivos.
+### 🚀 Funcionalidades Principales
 
-### ✨ Características Principales
-
-| Funcionalidad | Descripción |
+| Característica | Descripción |
 |---------------|-------------|
-| 🔐 **Autenticación** | Registro e inicio de sesión con JWT |
-| 📝 **Análisis Individual** | Analiza un texto y obtén sentimiento + confianza |
-| 📋 **Análisis por Lotes** | Múltiples textos (uno por línea) |
-| 📊 **Análisis CSV** | Carga archivos CSV con columnas de texto y categoría |
-| 📈 **Comparativas** | Análisis por período, producto y categoría |
-| 🗂️ **Gestión de Productos** | CRUD de categorías y productos |
-| 📜 **Historial** | Sesiones persistentes para usuarios registrados |
-| 🎨 **UI Moderna** | Glassmorphism, gradientes, animaciones |
-| 📱 **Responsive** | Adaptable a desktop, tablet y móvil |
-| 🇪🇸🇧🇷 **Multiidioma** | Soporte para español y portugués |
+| **Análisis Simple** | Procesa un texto individual y obtén el sentimiento (Positivo/Negativo/Neutral) |
+| **Análisis Múltiple** | Procesa múltiples textos simultáneamente con estadísticas agregadas |
+| **Carga CSV** | Sube archivos CSV con columna "texto" para análisis masivo |
+| **Análisis por Productos** | Asocia comentarios a productos específicos por categoría |
+| **Historial** | Visualiza análisis previos con gráficos de tendencias |
+| **Modo Demo** | Prueba la plataforma sin registro |
+
+### 🎨 Experiencia de Usuario
+
+- **Interfaz Moderna**: Diseño con gradientes, glassmorphism y animaciones fluidas
+- **Responsive**: Optimizado para desktop, tablet y móvil
+- **Feedback Visual**: Indicadores de carga, mensajes de éxito/error claros
+- **Navegación Intuitiva**: Flujo guiado paso a paso para análisis complejos
 
 ---
 
-## 🚀 Instalación Local
+## 🏗️ Arquitectura
 
-### Requisitos
-- Node.js 18+
-- npm 9+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     React Frontend App                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────────────────┐         ┌─────────────────────────┐  │
+│  │   🎨 UI Layer        │         │  ⚙️ Logic Layer         │  │
+│  │   (Tailwind CSS)     │         │  (Services & Hooks)     │  │
+│  │                      │         │                         │  │
+│  │  • Landing           │  ────►  │  • authService.js       │  │
+│  │  • DashboardView     │  ◄────  │  • sentimentService.js  │  │
+│  │  • AnalysisView      │         │  • api.js (Axios)       │  │
+│  │  • HistoryView       │         │                         │  │
+│  │                      │         │                         │  │
+│  └──────────────────────┘         └─────────────────────────┘  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              ↕
+                    🌐 SentimentAPI Backend
+                 (http://localhost:8080/api/v2)
+```
 
-### Pasos
+### 📂 Estructura del Proyecto
 
+```
+src/
+├── components/
+│   └── layout/
+│       └── Navbar.jsx          # Navegación principal
+├── config/
+│   └── api.js                  # Configuración de endpoints
+├── services/
+│   ├── authService.js          # Login y Registro
+│   └── sentimentService.js     # Análisis de sentimientos
+├── utils/
+│   ├── formatName.js           # Formateo de nombres
+│   └── sentiment.js            # Helpers de sentimientos
+├── views/
+│   ├── Landing.jsx             # Página de inicio
+│   ├── Auth.jsx                # Login/Registro
+│   ├── DashboardView.jsx       # Panel principal
+│   ├── AnalysisView.jsx        # Análisis (simple/batch)
+│   ├── HistoryView.jsx         # Historial con gráficos
+│   ├── CategorySelectionView.jsx
+│   ├── ProductSelectionView.jsx
+│   └── DemoSelectionView.jsx
+├── App.jsx                     # Router principal
+└── main.jsx                    # Punto de entrada
+```
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+### Core Stack
+
+| Tecnología | Versión | Propósito |
+|-----------|---------|-----------|
+| **React** | 19.2.0 | Framework principal |
+| **Vite** | 7.2.4 | Build tool y dev server |
+| **Tailwind CSS** | 4.1.18 | Estilos y diseño |
+| **React Router DOM** | 7.12.0 | Navegación SPA |
+
+### Librerías Adicionales
+
+- **Lucide React** (0.562.0): Iconografía moderna
+- **Recharts** (2.15.0): Gráficos interactivos
+- **ESLint** (9.39.1): Linting y calidad de código
+
+---
+
+## 🚀 Instalación
+
+### Prerrequisitos
+
+- **Node.js** >= 20.19.0
+- **npm** >= 8.0.0
+- Backend **SentimentAPI** corriendo en `http://localhost:8080`
+
+### Pasos de Instalación
+
+1. **Clonar el repositorio**
 ```bash
-# Clonar el repositorio
-git clone https://github.com/GustavoVasquezS/sentiment-dashboard.git
-cd sentiment-dashboard
+git clone https://github.com/tu-usuario/sentimentapi-frontend.git
+cd sentimentapi-frontend
+```
 
-# Instalar dependencias
+2. **Instalar dependencias**
+```bash
 npm install
-
-# Crear archivo de variables de entorno
-cp .env.example .env
-
-# Iniciar en modo desarrollo
-npm start
 ```
 
-La aplicación estará disponible en `http://localhost:3000`
+3. **Configurar variables de entorno** (opcional)
 
----
+Edita `src/config/api.js` para ajustar la URL del backend:
 
-## ⚙️ Variables de Entorno
-
-Crear archivo `.env` en la raíz del proyecto:
-
-```env
-# API de Machine Learning (Python/FastAPI)
-REACT_APP_PYTHON_API_URL=https://sentiment-api-render.onrender.com
-
-# Backend Java (Spring Boot) - Para autenticación y gestión
-REACT_APP_JAVA_API_URL=https://sentiment-backend-java-production.up.railway.app/project/api/v2
+```javascript
+const API_BASE_URL = 'http://localhost:8080/project/api/v2';
 ```
 
-### Para desarrollo local:
+4. **Iniciar servidor de desarrollo**
+```bash
+npm run dev
+```
 
-```env
-REACT_APP_PYTHON_API_URL=http://localhost:8000
-REACT_APP_JAVA_API_URL=http://localhost:8080/project/api/v2
+5. **Abrir en el navegador**
+```
+http://localhost:5173
 ```
 
 ---
 
-## 📁 Estructura del Proyecto
+## 💻 Uso
 
+### 🎭 Modo Demo
+
+1. Haz clic en **"Ver Demo"** en la página de inicio
+2. Elige entre **Análisis Simple** o **Análisis Múltiple**
+3. Ingresa tus textos y analiza sin necesidad de registro
+
+### 👤 Usuarios Registrados
+
+#### Registro
+1. Clic en **"Registrarse"**
+2. Completa: Nombre, Apellido, Email, Contraseña
+3. Serás redirigido al login automáticamente
+
+#### Login
+1. Ingresa tu email y contraseña
+2. Accede al **Dashboard** completo
+
+#### Dashboard
+- **Análisis Simple**: Procesa un texto individual
+- **Análisis Múltiple**: Procesa varios textos o carga CSV
+- **Historial**: Revisa análisis anteriores con gráficos
+
+### 📊 Análisis Múltiple con Productos
+
+1. Selecciona **"Análisis Múltiple"**
+2. **Paso 1**: Elige una categoría (ej. "Electrónica")
+3. **Paso 2**: Selecciona productos o crea nuevos
+4. **Paso 3**: Ingresa textos o carga CSV
+5. Visualiza resultados con desglose por producto
+
+### 📁 Carga de CSV
+
+Tu archivo debe tener esta estructura:
+
+```csv
+texto
+"Este producto es excelente"
+"No me gustó la calidad"
+"Es bueno pero caro"
 ```
-sentiment_dashboard/
-├── public/
-│   ├── index.html
-│   └── favicon.ico
-├── src/
-│   ├── App.js              # Componente principal (toda la lógica)
-│   ├── index.js            # Entry point
-│   └── index.css           # Estilos Tailwind
-├── .env                    # Variables de entorno (no commitear)
-├── .env.example            # Plantilla de variables
-├── package.json
-├── tailwind.config.js
-├── postcss.config.js
-└── README.md
+
+**Límites**: Hasta 500 filas por archivo
+
+---
+
+## 🔄 Flujo de Análisis Batch
+
+```mermaid
+graph LR
+    A[Usuario] --> B[Selecciona CSV]
+    B --> C[Valida formato]
+    C --> D[Envía al Backend]
+    D --> E[IA procesa textos]
+    E --> F[Retorna resultados]
+    F --> G[Renderiza gráficos]
+```
+
+**Procesamiento**:
+1. El frontend valida la columna "texto"
+2. Envía datos al endpoint `/sentiment/analyze/batch`
+3. El backend usa modelos de ML (Python)
+4. Retorna JSON con sentimientos + probabilidades
+5. Frontend calcula estadísticas y renderiza UI
+
+---
+
+## 🎨 Ejemplos Visuales
+
+### Dashboard Principal
+```
+┌────────────────────────────────────────────┐
+│  🏠 Dashboard                              │
+├────────────────────────────────────────────┤
+│                                            │
+│  Hola Juan!                                │
+│  ¿Qué deseas hacer hoy?                    │
+│                                            │
+│  [📄 Análisis Simple] [📊 Análisis Múltiple]│
+│  [📜 Ver Historial]                        │
+└────────────────────────────────────────────┘
+```
+
+### Resultados de Análisis
+```
+┌────────────────────────────────────────────┐
+│  📈 Análisis Completado                    │
+├────────────────────────────────────────────┤
+│  Textos Analizados: 125                    │
+│                                            │
+│  ✅ Positivos: 87 (69.6%)                  │
+│  ⚠️  Neutrales: 25 (20.0%)                 │
+│  ❌ Negativos: 13 (10.4%)                  │
+│                                            │
+│  [Ver desglose por producto]               │
+└────────────────────────────────────────────┘
 ```
 
 ---
 
-## ☁️ Despliegue en Vercel
+## 🔐 Seguridad
 
-### Opción 1: CLI
+- **JWT Authentication**: Tokens seguros para sesiones
+- **LocalStorage**: Persistencia local de sesión
+- **Protected Routes**: Rutas protegidas con React Router
+- **CORS**: Configurado en el backend
+
+---
+
+## 📦 Scripts Disponibles
 
 ```bash
-# Instalar Vercel CLI
-npm install -g vercel
-
-# Desplegar
-vercel
+# Desarrollo
+npm run dev          # Inicia servidor de desarrollo (puerto 5173)
 
 # Producción
-vercel --prod
-```
+npm run build        # Genera build optimizado en /dist
+npm run preview      # Previsualiza build de producción
 
-### Opción 2: GitHub Integration
-
-1. Crear cuenta en [Vercel](https://vercel.com)
-2. Importar repositorio de GitHub
-3. Configurar variables de entorno en Settings > Environment Variables:
-   - `REACT_APP_PYTHON_API_URL` = `https://sentiment-api-render.onrender.com`
-   - `REACT_APP_JAVA_API_URL` = `https://sentiment-backend-java-production.up.railway.app/project/api/v2`
-4. Deploy automático en cada push a `main`
-
-### Build para producción (manual)
-
-```bash
-npm run build
-# Los archivos estáticos estarán en /build
+# Calidad de Código
+npm run lint         # Ejecuta ESLint
 ```
 
 ---
 
-## 🔧 Funcionalidades Detalladas
+## 🚧 Próximos Pasos
 
-### 🔐 Autenticación
-- **Registro:** Nombre, apellido, email, contraseña
-- **Login:** Email + contraseña → Token JWT
-- **Sesión persistente:** Token guardado en localStorage
-- **Modo invitado:** Acceso limitado sin registro
-
-### 📝 Análisis Individual (Tab "Individual")
-- Ingresa un texto (mín. 5 caracteres)
-- Resultado: Sentimiento, probabilidad, indicador de revisión
-- Gráfico donut con distribución
-- Botones de prueba rápida
-
-### 📋 Análisis por Lotes (Tab "Por Lotes")
-- Múltiples textos (uno por línea)
-- Resumen: Conteo de positivos/negativos/neutros
-- Lista detallada con cada resultado
-- Gráficos de distribución y confianza
-
-### 📊 Análisis CSV (Tab "CSV")
-- Carga archivo CSV con columnas:
-  - `comentario` o `texto`: El texto a analizar
-  - `categoria` (opcional): Para agrupar resultados
-- Exportación de resultados a CSV
-- Asociación con productos existentes
-
-### 📈 Comparativas (Tab "Comparativas")
-- **Por Período:** Análisis histórico en rango de fechas
-- **Por Producto:** Sentimientos agrupados por producto
-- **Por Categoría:** Distribución por categorías
-
-### 🗂️ Gestión (Tab "Gestión")
-- CRUD de Categorías
-- CRUD de Productos (asociados a categorías)
-- Solo para usuarios autenticados
+- [ ] Implementar previsualización de CSV antes de analizar
+- [ ] Agregar gráficos dinámicos por producto (Recharts)
+- [ ] Exportar resultados a PDF/Excel
+- [ ] Modo oscuro/claro configurable
+- [ ] Soporte para más idiomas (Inglés, Francés)
+- [ ] PWA (Progressive Web App) para uso offline
 
 ---
 
-## 📦 Dependencias Principales
+## 🤝 Contribuciones
 
-| Paquete | Versión | Descripción |
-|---------|---------|-------------|
-| react | 18.2+ | Framework UI |
-| recharts | 2.12+ | Gráficos interactivos |
-| lucide-react | 0.300+ | Iconos modernos |
-| tailwindcss | 3.4+ | Framework CSS utility-first |
+Este proyecto fue desarrollado como parte de la **Hackatón ONE H12-25-L** por el equipo:
 
----
+### 👥 Equipo "No Data - No Code"
 
-## 🔗 Repositorios Relacionados
-
-| Componente | Repositorio | Descripción |
-|------------|-------------|-------------|
-| Backend Java | [sentiment-backend-java](https://github.com/GustavoVasquezS/sentiment-backend-java) | API Gateway con JWT |
-| ML API Python | [sentiment-api-render](https://github.com/GustavoVasquezS/sentiment-api-render) | Modelo de ML |
-
----
-
-## 🧪 Testing
-
-### Credenciales de prueba
-```
-Email: testcsv@test.com
-Password: test123
-```
-
-### Textos de prueba
-- **Positivo:** "Este producto es excelente, me encanta!"
-- **Negativo:** "Pésimo servicio, muy decepcionado"
-- **Neutro:** "El producto llegó, funciona normal"
+| Rol | Nombre |
+|-----|--------|
+| **Frontend Lead** | [Tu Nombre] |
+| **Backend Lead** | [Nombre del compañero] |
+| **ML Engineer** | [Nombre del compañero] |
+| **UX/UI Designer** | [Nombre del compañero] |
 
 ---
 
 ## 📄 Licencia
 
-MIT License
+Este proyecto es parte de un trabajo académico de la Hackatón ONE 2026.
 
 ---
 
 ## 🙏 Agradecimientos
 
-Este proyecto fue posible gracias al esfuerzo colaborativo y el apoyo de múltiples actores:
-
-### Al Programa Hackathon ONE - No Country
-
-Agradecemos profundamente a **No Country** por:
-- Proporcionar un espacio de aprendizaje colaborativo y desafiante
-- Fomentar el trabajo en equipo interdisciplinario
-- Crear oportunidades para desarrolladores de toda Latinoamérica
-- Impulsar proyectos que resuelven problemas reales con tecnología
-
-### Al Equipo No Data - No Code
-
-Agradecimiento especial al equipo **No Data - No Code** por el extraordinario trabajo realizado durante la Hackathon:
-
-- **Alexandra Cleto** - Por su repositorio de referencia [sentimientos](https://github.com/Alexandracleto/sentimientos/tree/Ale-dev) que sirvió como inspiración y base para el diseño de este dashboard. Su trabajo incluye:
-  - Diseño UI moderno con Glassmorphism y gradientes
-  - Integración con Recharts para visualización de datos
-  - Estructura de componentes React reutilizables
-  
-- **Jonathan Tuppia** - Por su repositorio de referencia [SentimentAPI](https://github.com/Jona-9/SentimentAPI) y por liderar el deploy de los tres frentes en local y la presentación exitosa en el Demo Day.
-- **Francisco Llendo** - Por desarrollar el modelo de ML v4.0 disponible en [Sentimental_API_No_Data_No_Code_Semana_4](https://github.com/GustavoVasquezS/Sentimental_API_No_Data_No_Code_Semana_4).
-
-### Al Equipo de Desarrollo
-
-**Frontend Team (React/Tailwind)**:
-- Por crear una interfaz intuitiva que hace accesible la complejidad del análisis
-- Por implementar gráficos interactivos con Recharts
-- Por el diseño responsive adaptable a múltiples dispositivos
-
-**Backend Team (Java/Spring Boot)**:
-- Por la implementación robusta del sistema de autenticación JWT
-- Por los endpoints de gestión de productos y sesiones
-
-**Data Science Team (Python/FastAPI)**:
-- Por desarrollar un modelo de ML preciso y eficiente
-- Por los endpoints de predicción rápidos y confiables
-
-### A la Comunidad Open Source
-
-Especial reconocimiento a los mantenedores de:
-- **React** - Por el framework UI declarativo y eficiente
-- **Tailwind CSS** - Por el sistema de diseño utility-first
-- **Recharts** - Por los componentes de gráficos basados en React
-- **Lucide** - Por los iconos modernos y accesibles
-
-### A los Futuros Usuarios y Contribuidores
-
-Si este proyecto te resultó útil, considera:
-- ⭐ **Dar una estrella** al repositorio en GitHub
-- 🐛 **Reportar bugs** o sugerir mejoras a través de Issues
-- 🔧 **Contribuir** con Pull Requests
-- 📢 **Compartir** el proyecto con otros desarrolladores
+- **Oracle Next Education (ONE)** por la oportunidad
+- **Alura Latam** por el soporte educativo
+- Comunidad de **React** y **Tailwind CSS**
+- Todos los que probaron y dieron feedback al proyecto
 
 ---
 
 <div align="center">
 
-**⭐ Si este proyecto te ayudó, considera darle una estrella ⭐**
+### 🌟 ¡Gracias por usar SentimentAPI!
 
-**🚀 Happy Coding! 🚀**
+**Desarrollado con ❤️ por el equipo No Data - No Code**
 
----
-
-*Sentiment Dashboard v4.0 - Hackathon ONE 2026*
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github)](https://github.com/tu-usuario/sentimentapi-frontend)
+[![Demo](https://img.shields.io/badge/Ver-Demo_Live-purple?style=for-the-badge)](https://tu-demo-url.com)
 
 </div>
+
+---
+**¡Feliz análisis de sentimientos! 🚀**
